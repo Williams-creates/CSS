@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trapezium Area Calculator</title>
+</head>
+<body>
+    <h2>Calculate the Area of a Trapezium</h2>
+
+    <label for="base1">Base 1:</label>
+    <input type="number" id="base1" placeholder="Enter the length of base 1"><br><br>
+
+    <label for="base2">Base 2:</label>
+    <input type="number" id="base2" placeholder="Enter the length of base 2"><br><br>
+
+    <label for="height">Height:</label>
+    <input type="number" id="height" placeholder="Enter the height"><br><br>
+
+    <button onclick="calculateAndDisplayArea()">Calculate Area</button>
+
+    <p id="result"></p>
+
+    <script>
+        function calculateTrapeziumArea(base1, base2, height) {
+            if (base1 <= 0 || base2 <= 0 || height <= 0) {
+                throw new Error("Base lengths and height must be greater than zero.");
+            }
+            // Calculate the area using the trapezium area formula
+            const area = 0.5 * (base1 + base2) * height;
+            return area;
+        }
+
+        function calculateAndDisplayArea() {
+            try {
+                const base1 = parseFloat(document.getElementById("base1").value);
+                const base2 = parseFloat(document.getElementById("base2").value);
+                const height = parseFloat(document.getElementById("height").value);
+
+                if (isNaN(base1) || isNaN(base2) || isNaN(height)) {
+                    alert("Please enter valid numbers for all inputs.");
+                    return;
+                }
+
+                const area = calculateTrapeziumArea(base1, base2, height);
+                document.getElementById("result").textContent = "The area of the trapezium is: " + area;
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+    </script>
+</body>
+</html>
